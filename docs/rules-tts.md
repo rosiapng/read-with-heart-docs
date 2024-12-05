@@ -7,6 +7,7 @@
 |:----------------|:-----|:-------------|
 | `@{voiceType}`  | 语音标志 | 角色的唯一标识      |
 | `@{text}`       | 文本内容 | 需要转换为语音的文字内容 |
+| `@{voiceStyle}` | 情感标识 | 角色的情感风格标识 |
 
 ### 请求示例
 
@@ -18,7 +19,8 @@ let url = 'https://www.baidu.com';
 // 请求参数
 let params = {
 	type: '@{voiceType}',
-	text: '@{text}'
+	text: '@{text}',
+	style: '@{voiceStyle}',
 };
 
 // 请求header
@@ -59,6 +61,7 @@ return {
 
 | 参数        | 名称   | 类型     | 默认值 | 说明           |
 |:----------|:-----|:-------|:----|:-------------|
+| voiceStyle | 情感标识 | String | -   | 角色的情感风格标识  |
 | voiceType | 语音标识 | String | -   | 角色的唯一标识      |
 | sex       | 性别   | Number | 0   | 性别 0未知，1男，2女 |
 | name      | 名称   | String | -   | 显示的名称        |
@@ -67,11 +70,13 @@ return {
 ```json
 [
     {
+        "voiceStyle" : "gentle", // 情感风格标识
         "voiceType" : "zh-zhangsan", // 语音标识
         "sex" : 1, // 性别 0未知，1男，2女
         "name" : "张三" // 名字
     },
     {
+	"voiceStyle" : "sad", // 情感风格标识
         "voiceType" : "zh-erya", // 语音标识
         "sex" : 2, // 性别 0未知，1男，2女
         "name" : "二丫" // 名字
