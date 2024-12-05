@@ -51,8 +51,38 @@ return {
 ```
 
 #### WebSocket
+
+WebSocket和post的最大区别在于WebSocket的返回值是字符串 socket
+
 ```javascript
-// TODO
+const ws = app.socket('wss://xxxxx');
+// socket连接
+ws.open(() => {
+    console.log('连接socket成功');
+    let message = '{"type": "@{voiceType}", "text": "@{text}"}'
+    // 发送消息
+    ws.send(message);
+});
+
+// 获取text文本信息
+ws.text((text) => {
+    console.log('返回的text数据:', text);
+    const json = JSON.parse(text);
+    if (json.event === 'TaskFinished') {
+        // 告诉app，消息已经接收完毕
+        ws.finished();
+    }
+});
+
+// 获取二进制消息信息
+ws.binary((data) => {
+    console.log('返回的二进制数据:', data.length);
+    // 将获取到的数据处理后重新推送给app，如果不需要处理该data，直接删除该binary方法
+    ws.push(data)
+});
+
+// 必定返回值，告诉app这是一个websocket
+return 'socket';
 ```
 
 ## 角色配置
@@ -76,7 +106,7 @@ return {
         "name" : "张三" // 名字
     },
     {
-	"voiceStyle" : "sad", // 情感风格标识
+	    "voiceStyle" : "sad", // 情感风格标识
         "voiceType" : "zh-erya", // 语音标识
         "sex" : 2, // 性别 0未知，1男，2女
         "name" : "二丫" // 名字
