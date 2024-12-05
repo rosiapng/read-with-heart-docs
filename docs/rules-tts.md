@@ -71,6 +71,9 @@ ws.text((text) => {
     if (json.event === 'TaskFinished') {
         // 告诉app，消息已经接收完毕
         ws.finished();
+        
+        // 关闭连接
+        ws.close();
     }
 });
 
