@@ -56,6 +56,7 @@ WebSocket和post的最大区别在于WebSocket的返回值是字符串 socket
 
 ```javascript
 const ws = app.socket('wss://xxxxx');
+
 // socket连接
 ws.open(() => {
     console.log('连接socket成功');
@@ -80,7 +81,7 @@ ws.text((text) => {
 // 获取二进制消息信息
 ws.binary((data) => {
     console.log('返回的二进制数据:', data.length);
-    // 将获取到的数据处理后重新推送给app，如果不做处理，直接push，data数据即可
+    // 将获取到的数据处理后重新推送给app，如果不做处理，直接push data数据即可
     ws.push(data)
 });
 

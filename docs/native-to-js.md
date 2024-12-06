@@ -219,6 +219,58 @@ App暴露的Javascript方法，可以使用这些方法调用原生的组件！
     | responseHeader | - | Object | 响应标头 |
     | cookie | - | Object | Cookie |
 
+## WebSocket
+
+=== "示例"
+
+    ```javascript linenums="1"
+    const ws = app.socket('wss://xxxxx');
+    
+    // 连接socket成功
+    ws.open(() => {
+        // 发送消息
+        ws.send('hello');
+    })
+    
+    // 获取文本信息
+    ws.text((text) => {
+        console.log(text);
+
+        // 消息接收完毕，主要用于自定义tts中
+        ws.finished();
+    })
+
+    // 获取二进制数据
+    ws.binary((data) => {
+        console.log(data);
+        
+        // 消息推送给app，主要用于自定义tts中
+        ws.push(data);
+    })
+
+    // 关闭连接
+    ws.close();
+    ```
+
+=== "API"
+    - 请求
+
+    | 参数 | 名称 | 类型 | 默认值 | 说明 |
+    |:---|:---|:---|:---|:---|
+    | path | 地址 | String | - | - |
+    | protocols | 协议 | Array | [] | - |
+
+    - 方法
+
+    | 参数 | 名称 | 类型 | 说明 |
+    |:---|:---|:---|:---|
+    | open(() => {}) | 连接成功 | - | - |
+    | text((text) => {}) | 字符串消息回调 | String | - |
+    | binary((data) => {}) | 二进制消息回调 | Uint8Array | - |
+    | close(() => {}) | 关闭连接 | - | - |
+    | push | 数据推送 | - | - |
+    | finished | 数据接收完成推送 | - | - |
+
 ## 简易存储
 
 将一个或多个参数本地化保存,获取和删除.
