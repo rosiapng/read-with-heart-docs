@@ -80,7 +80,7 @@ ws.text((text) => {
 // 获取二进制消息信息
 ws.binary((data) => {
     console.log('返回的二进制数据:', data.length);
-    // 将获取到的数据处理后重新推送给app，如果不需要处理该data，直接删除该binary方法
+    // 将获取到的数据处理后重新推送给app，如果不做处理，直接push，data数据即可
     ws.push(data)
 });
 
