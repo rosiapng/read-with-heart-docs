@@ -117,3 +117,95 @@ return 'socket';
     }
 ]
 ```
+
+## 本地部署TTS
+
+在没有其它TTS可用的情况下，可以尝试在自己电脑上部署一个TTS
+
+文档采用Docker部署方案，我们从Docker安装开始教学
+
+### 安装Docker
+
+1、下载Docker桌面版，根据不同的电脑系统下载对应的软件，以下是官网地址：
+
+```
+https://www.docker.com/products/docker-desktop/
+```
+
+2、安装完成后打开软件Docker
+
+3、在您任意电脑位置新建文件夹，命名为 `docker`，即：
+
+- Windows电脑打开 `D` 盘，新建文件夹，命名为 `docker`
+- MacOS 可以打开访达 `文稿` 在该目录下新建文件夹，命名为 `docker`
+- Linux 用户就不说了，大家都懂
+
+4、在 `docker` 目录下新建一个文件，命名为 `docker-compose.yml`，文件后缀一定是 `.yml`，在该文件中写入以下内容，保存并关闭：
+
+```
+services:
+  ifreetimeTTS:
+    container_name: ifreetimeTTS
+    image: yunfinibol/ms-ra-forwarder-for-ifreetime:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    # 如果可以保持自己的ip或者完整域名不公开的话，可以不用设置环境变量
+    environment: []
+    #需要的话把上边一行注释，下面两行取消注释
+    #environment:
+    #  - TOKEN=自定义TOKEN
+```
+
+### 安装TTS
+
+打开终端软件使用命令安装TTS
+
+Windows用户打开 `cmd` 软件，mac用户打开 `终端` 软件
+
+cd至新建的 `docker` 目录，运行以下命令，正常情况下可以安装成功：
+
+```
+docker-compose up --build -d
+```
+
+在浏览器打开以下链接，测试是否已经安装成功：
+
+```
+http://localhost:3000/api/aiyue?voiceName=zh-CN-XiaoxiaoNeural&text=你好
+```
+
+### APP配置TTS
+
+1、打开软件，找到 `语音管理` - `语音制作` ，名称，主地址随便填，切换到 `规则配置` 页面，在 `请求处理` 中输入以下代码：
+
+- 电脑和手机必须在同一个局域网内
+- 代码中 `你的ip地址` 需要使用你电脑的ipv4地址（具体可以在百度或者google中输入怎么查看电脑ip），然后将获取到的ip地址替换 `你的ip地址`
+- 一般局域网的ip地址是一个 `192.168.x.x` 的样式
+
+```javascript linenums="1"
+
+// 请求地址
+let url = 'https://你的ip地址:3000/api/aiyue?voiceName=@{voiceType}&text=@{text}'
+
+return {
+  url,
+  method: 'GET'
+}
+
+```
+
+2、角色配置，点击添加以下内容，保存即可，然后就可以测试发音了
+```
+名称：晓晓
+角色标识：zh-CN-XiaoxiaoNeural
+角色性别：女
+```
+
+### 参考
+
+```
+https://github.com/yy4382/ms-ra-forwarder-for-ifreetime
+
+https://yfi.moe/post/ifreetime-mstts-selfhost/
+```
