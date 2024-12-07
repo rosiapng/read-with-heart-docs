@@ -142,7 +142,7 @@ https://www.docker.com/products/docker-desktop/
 
 4、在 `docker` 目录下新建一个文件，命名为 `docker-compose.yml`，文件后缀一定是 `.yml`，在该文件中写入以下内容，保存并关闭：
 
-```
+```yaml linenums="1"
 services:
   ifreetimeTTS:
     container_name: ifreetimeTTS
