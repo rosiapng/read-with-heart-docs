@@ -2,20 +2,35 @@
 
 ## 参数说明
 
+### 系统自带get参数
+| 参数名称          | 说明        | 用例                    | 说明                             |
+|:--------------|-----------|:----------------------|:-------------------------------|
+|     keyword          |   关键词        | `@get{keyword}`       | 只在书籍搜索中可使用                     |
+|          preResHeader1            |     前置请求标头         | `@get{preResHeader1.xxx}`                      | 全局可用(前置响应标头使用数字标记，用于保存所有的前置)   |
+|              preRepHeader1                     |      前置响应标头              |                 `@get{preRepHeader1.xxx}`                               | 全局可用(前置响应标头使用数字标记，用于保存所有的前置)   |
+|      resHeader         |请求标头           |       `@get{resHeader.xxx}`                |                                |
+|          repHeader              |      响应标头         |       `@get{repHeader.xxx}`                                     |                                |
+| loginRequest  | 登录请求头     | `@get{loginRequest}`  | 点击登录后，会自动保存登录请求头，可在书源中获取使用     |
+| loginResponse | 登录响应头     | `@get{loginResponse}` | 点击登录后，会自动保存登录响应头，可在书源中获取使用     |
+|      loginCookies         |     登录cookies      |        `@get{loginCookies}`               | 点击登录后，会自动保存登录cookies，可在书源中获取使用 |
+|      bookUrl         |    书籍地址       |         `@get{bookUrl}`              | 章节列表、正文使用                      |
+|       chapterUrl               |        章节地址       |          `@get{chapterUrl}`                    | 正文使用                           |
+|         host                       |           主地址        |          `@get{host}`                                      |                                |
+
 ### 公共内置请求参数
-| 参数名称   | 说明             | 用例                     | 值类型示例                |
-|:----------|------------------|:------------------------|:------------------------|
-| params    | 请求参数         | `config.params`    |                         |
-| engine    | 源引擎类型       | `config.engine`    | xpath、jsonpath          |
-| method    | 请求类型         | `config.method`    | POST，GET                |
-| host      | 站点地址         | `config.host`      |                         |
-| header    | 请求头           | `config.header` | 优先级别：正式请求头>浏览器过盾请求头>公共请求头 |
-| mode      | 请求模式         | `config.mode`      | http、webview            |
-| requestEncode | 请求编码方式   | `config.requestEncode` | utf-8、gbk              |
-| responseEncode | 响应编码方式   | `config.responseEncode` | utf-8、gbk              |
-| cookies   | cookies信息      | `config.cookies`   |                         |
-| openParams| 开放参数，可自定义 | `config.openParams`|                         |
-| verifyCode| 验证码           | `config.verifyCode`|                         |
+| 参数名称           | 说明        | 用例                      | 值类型示例                      |
+|:---------------|-----------|:------------------------|:---------------------------|
+| params         | 请求参数      | `config.params`         |                            |
+| engine         | 源引擎类型     | `config.engine`         | xpath、jsonpath             |
+| method         | 请求类型      | `config.method`         | POST，GET                   |
+| host           | 站点地址      | `config.host`           |                            |
+| header         | 请求头       | `config.header`         | 优先级别：正式请求头>浏览器过盾请求头>公共请求头  |
+| mode           | 请求模式      | `config.mode`           | http、webview               |
+| requestEncode  | 请求编码方式    | `config.requestEncode`  | utf-8、gbk                  |
+| responseEncode | 响应编码方式    | `config.responseEncode` | utf-8、gbk                  |
+| cookies        | cookies信息 | `config.cookies`        |                            |
+| openParams     | 开放参数，可自定义 | `config.openParams`     |                            |
+| verifyCode     | 验证码       | `config.verifyCode`     |                            |
 
 ### 搜索规则
 
