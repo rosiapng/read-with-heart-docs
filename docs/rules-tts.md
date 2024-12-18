@@ -28,7 +28,7 @@ let header = {
 	token: 'xxx'	
 };
 
-// POST请求，具体参考文档 native-to-js
+// POST请求，具体参考文档 native-to-javascript
 let response = await app.post({
 	url,
 	params,
@@ -166,6 +166,13 @@ Windows用户打开 `cmd` 软件，mac用户打开 `终端` 软件
 cd至新建的 `docker` 目录，运行以下命令，正常情况下可以安装成功：
 
 ```
+# windows
+cd D:\docker
+
+# MacOS OR Linux
+cd /路径/docker
+
+# 运行安装命令
 docker-compose up --build -d
 ```
 
