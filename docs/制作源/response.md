@@ -6,6 +6,8 @@
 由于app使用的是原生的写法，故采用最了基础的JS写法，不支持浏览器中的一些写法以及Node.js的写法，所以我们内置了一些比如像浏览器中操作Document的方法等。
 
 ### Document的处理
+`v2.6.0 以上版本支持`
+
 使用CSS选择器查找元素，具体可以参考 [Jsoup](https://jsoup.org/cookbook/extracting-data/selector-syntax)
 ```javascript
 // 获取标题
