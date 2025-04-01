@@ -1,6 +1,36 @@
 # Native to Javascript
 App暴露的Javascript方法，可以使用这些方法调用原生的组件！
 
+## Document
+HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规范。
+
+=== "示例"
+
+    ```javascript
+    let html = "<html><head><title>Example</title></head>
+        <body><p>Hello!</p><p>Hi!</p></body></html>";
+
+    // 解析html
+    let document = app.doc(html, false);
+
+    // 获取标题
+    let title = document.title();
+    app.log(title);
+    
+    // 用 CSS 查询选择元素
+    let list = document.select("p")
+    list.forEach(element => {
+        // 获取内容
+        app.log(element.text());
+    });
+    ```
+=== "API"
+
+    | 参数 | 名称 | 类型 | 默认值 | 说明 |
+    |:---|:---|:---|:---|:---|
+    | html | 参数 | String | - | html内容 |
+    | clean | 参数 | Boolean | - | 清理HTML |
+
 ## log
 打印调试日志，等同于`console.log()`
 
