@@ -443,7 +443,7 @@ HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规
     App.log(encryptData); // Hello, World!
 
     // 解码成Bytes v2.6.0以上支持
-    let decodeData = App.base64.decode(encodeData, true);    
+    let decodeData = App.base64.decodeToBytes(encodeData);    
     App.log(encryptData); // [72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33]
     ```
 
@@ -454,7 +454,6 @@ HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规
     | 参数 | 名称 | 类型 | 默认值 | 说明 |
     |:---|:---|:---|:---|:---|
     | data | 编码解码内容 | String | - | - |
-    | toBytes | 解码成字节数组 | Boolean | false | - |
 
     - 响应
 
