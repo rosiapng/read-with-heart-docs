@@ -441,6 +441,10 @@ HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规
     // 解码
     let decodeData = App.base64.decode(encodeData);    
     App.log(encryptData); // Hello, World!
+
+    // 解码成Bytes v2.6.0以上支持
+    let decodeData = App.base64.decode(encodeData, true);    
+    App.log(encryptData); // [72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33]
     ```
 
 === "API"
