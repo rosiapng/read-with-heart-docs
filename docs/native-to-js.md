@@ -462,6 +462,7 @@ HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规
     | data | - | String | 编码解码内容 |
 
 ## GBK转UTF8转GBK
+`v2.6.0 以上版本支持`
 
 === "示例"
 
