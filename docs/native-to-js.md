@@ -461,6 +461,33 @@ HTML解析和操作，轻松实现数据提取和转换，遵循WHATWG HTML5 规
     |:---|:---|:---|:---|
     | data | - | String | 编码解码内容 |
 
+## GBK转UTF8转GBK
+
+=== "示例"
+
+    ```javascript
+    let text = '你好！';
+    
+    // utf8转gbk
+    let gbkText = App.string.toGBK('utf8字符');
+    
+    // gbk转utf8
+    let utf8Text = App.string.toUTF8('gbk字符');
+    ```
+
+=== "API"
+
+    - 请求
+
+    | 参数 | 名称 | 类型 | 默认值 | 说明 |
+    |:---|:---|:---|:---|:---|
+    | text | 字符串 | String | - | - |
+
+    - 响应
+
+    | 参数 | 名称 | 类型 | 说明 |
+    |:---|:---|:---|:---|
+    | text | - | String | 对应的编码字符串 |
 
 ## Unicode 编码解码
 
